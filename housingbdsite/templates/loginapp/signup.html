@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container bg-light shadow-md p-5 form-layout">
+    <br>
+    <br>
+    <div class="text-center">
+        <h3>Create your account</h3>
+        <h5>Start managing your clients today!</h5>
+    </div>
+
+    <hr>
+    {% if registered %}
+    <div class="alert alert-success"> Congratulations! Registration Successfull</div>
+    {% else %}
+    <form enctype="multipart/form-data" action="" method="POST">
+        {{user_form.username|as_crispy_field }}
+        <br>
+        {{user_form.first_name|as_crispy_field }}
+        <br>
+        {{user_form.last_name|as_crispy_field }}
+        <br>
+        {{user_form.email|as_crispy_field }}
+        <br>
+        {{user_form.password|as_crispy_field }}
+        <br>
+        {% csrf_token %}
+        <button class="btn btn-primary w-100 btn-black p-2" type="submit">Create Account</button>
+    </form>
+    <br />
+    <div class="text-center">
+        <p>Already have an account ? <a href="{% url 'login_view' %}">Login</a> </p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

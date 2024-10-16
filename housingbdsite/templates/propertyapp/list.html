@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+<!-- .item --> <!-- .item -->
+
+<div class="container">
+  <div class="property-item">
+    <!-- <a href="property-single.html" class="img">
+      <img src="{% static 'images/img_3.jpg' %}" alt="Image" class="img-fluid" />
+    </a> -->
+
+    <div class="property-content">
+      {% for data in datas %}
+      <div class="price mb-2"><span>{{ data.price }}</span></div>
+      <div>
+        <span class="d-block mb-2 text-black-50">{{ data.address }}</span>
+        <span class="city d-block mb-3">{{ data.city }}</span>
+
+        <div class="specs d-flex mb-4">
+          <span class="d-block d-flex align-items-center me-3">
+            <span class="icon-bed me-2"></span>
+            <span class="caption">{{ data.bed }}</span>
+          </span>
+          <span class="d-block d-flex align-items-center">
+            <span class="icon-bath me-2"></span>
+            <span class="caption">{{ data.bath }}</span>
+          </span>
+        </div>
+
+        <a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<!-- .item -->
+
+{% endblock %}
